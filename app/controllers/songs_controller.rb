@@ -5,9 +5,17 @@ class SongsController < ApplicationController
   end
 
   def create
-    @songs = Song.create(title: params [:title],
-    album: params [:album], artist: params [:artist], year: params [:year],
+    @song = Song.create(
+      title: params[:title],
+      album: params[:album],
+      artist: params[:artist],
+      year: params[:year],
     )
-    render: show
+    render :show
+  end
+
+  def show
+    @song = Song.find_by(id: params[:id])
+    render :show
   end
 end
